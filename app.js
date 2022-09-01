@@ -3,7 +3,23 @@ let todoText = document.getElementById("todotext");
 let items = document.querySelector(".items");
 let msg = document.querySelector(".todo");
 let btn2 = document.querySelector(".edit");
+
+
+
+
+//add element on enter
+todoText.addEventListener("keypress",(event)=>{
+  if (event.key == "Enter"){
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // console.log(event.key)
+    // to triger the click event of the todo button
+    btn.click();
+  }
+})
+
 //add element
+
 btn.addEventListener("click", () => {
   let li = document.createElement("li");
   let span = document.createElement("span");
@@ -26,6 +42,7 @@ btn.addEventListener("click", () => {
     todoText.focus();
   }
 });
+
 
 //delete element
 items.addEventListener("click", (event) => {
@@ -79,3 +96,4 @@ items.addEventListener("click", (event) => {
   // console.log(element)
   element.classList.toggle("checked");
 });
+
