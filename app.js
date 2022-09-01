@@ -11,10 +11,15 @@ let btn2 = document.querySelector(".edit");
 todoText.addEventListener("keypress",(event)=>{
   if (event.key == "Enter"){
     // Cancel the default action, if needed
-    event.preventDefault();
+    // event.preventDefault();
     // console.log(event.key)
-    // to triger the click event of the todo button
+    // to triger the click event of the add todo button
+    if (todoText.value!="") {
     btn.click();
+  }
+  else{
+    alert("Todo field is empty!")
+  }
   }
 })
 
@@ -22,7 +27,6 @@ todoText.addEventListener("keypress",(event)=>{
 
 btn.addEventListener("click", () => {
   let li = document.createElement("li");
-  let span = document.createElement("span");
 
   let trash = document.createElement("i");
   let edit = document.createElement("i");
@@ -30,7 +34,8 @@ btn.addEventListener("click", () => {
   trash.classList.add("fas", "fa-trash");
   edit.classList.add("fas", "fa-edit");
 
-  if (todoText.value) {
+  if (todoText.value!="") {
+    let span = document.createElement("span");
     span.innerText = todoText.value;
     console.log(span.innerText)
     li.style.cssText = "animation-name:slide";
@@ -38,10 +43,15 @@ btn.addEventListener("click", () => {
     li.appendChild(span);
     li.appendChild(trash);
     li.appendChild(edit);
-    todoText.value = " ";
     todoText.focus();
+    todoText.value = " ";
   }
-});
+  else{
+    alert("Todo field is empty!")
+  }
+  todoText.value = "";
+}
+);
 
 
 //delete element
